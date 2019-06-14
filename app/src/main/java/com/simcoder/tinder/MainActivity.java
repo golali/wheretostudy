@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private String currentUId;
 
     private DatabaseReference usersDb;
+    private DatabaseHelper coutryDbHelper;
 
 
     ListView listView;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Code für die Auswertungsdatenbank
+        coutryDbHelper = new DatabaseHelper(this);
 
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
