@@ -65,4 +65,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLCOUNTRY, country);
         return db.update(AUSWERTUNG_TABLE_NAME, contentValues, COLUSER + "=?", new String[]{String.valueOf(user)}) == 1;
     }
+
+    Cursor getTopCountries(String user) {
+        SQLiteDatabase db = getReadableDatabase();
+        return db.rawQuery("SELECT TOP(5) * FROM " + AUSWERTUNG_TABLE_NAME + " WHERE " + COLUSER + " IS " + user, null);
+    }
 }
