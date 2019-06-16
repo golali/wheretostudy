@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList);
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 1);
                 // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
             }
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList);
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 4);
                 // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
             }
 
@@ -90,9 +90,19 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList);
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 2);
                 // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
             }
+
+            public void onPossibleButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 3);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+
 
 
 
