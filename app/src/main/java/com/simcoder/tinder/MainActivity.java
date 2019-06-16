@@ -20,6 +20,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.simcoder.tinder.Cards.arrayAdapter;
 import com.simcoder.tinder.Cards.cards;
 import com.simcoder.tinder.Matches.MatchesActivity;
+import com.simcoder.tinder.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
-
         checkUserSex();
 
         rowItems = new ArrayList<cards>();
-
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -70,6 +69,32 @@ public class MainActivity extends AppCompatActivity {
                 rowItems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
+
+            public void onNoButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+            public void onYesButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+            public void onMaybeButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+
 
             @Override
             public void onLeftCardExit(Object dataObject) {

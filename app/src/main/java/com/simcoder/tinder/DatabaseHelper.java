@@ -59,6 +59,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(AUSWERTUNG_TABLE_NAME, null, contentValues) != -1;
     }
 
+    //Wir brauchen einen Wert welchen wir hier übergeben, zb. 3 bei sehr gut und 1 bei mittel usw
+    //
     boolean increaseRating(String user, String country) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();

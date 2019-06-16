@@ -1,17 +1,23 @@
 package com.simcoder.tinder.Cards;
 
+import java.util.List;
+
 /**
  * Created by manel on 9/5/2017.
  */
 
 public class cards {
+    public List<String> countries;
+    private String countryImageUrl;
+
     private String userId;
     private String name;
     private String profileImageUrl;
-    public cards (String userId, String name, String profileImageUrl){
+    public cards (String userId, String name, String profileImageUrl, List<String> countries) {
         this.userId = userId;
         this.name = name;
         this.profileImageUrl = profileImageUrl;
+        this.countries = countries;
     }
 
     public String getUserId(){
