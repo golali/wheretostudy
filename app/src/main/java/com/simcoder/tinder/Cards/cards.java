@@ -13,11 +13,11 @@ public class cards {
     private String userId;
     private String name;
     private String profileImageUrl;
-    public cards (String userId, String name, String profileImageUrl, List<String> countries) {
+    public cards (String userId, String name, String profileImageUrl) {
         this.userId = userId;
         this.name = name;
         this.profileImageUrl = profileImageUrl;
-        this.countries = countries;
+        //this.countries = countries;
     }
 
     public String getUserId(){

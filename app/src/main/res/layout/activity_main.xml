@@ -28,6 +28,11 @@
             android:layout_height="wrap_content"
             android:text="Settings"
             android:onClick="goToSettings" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Final"
+            android:onClick="goToFinal" />
     </LinearLayout>
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView

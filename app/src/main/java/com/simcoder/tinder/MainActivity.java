@@ -56,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
         currentUId = mAuth.getCurrentUser().getUid();
         checkUserSex();
 
+        ArrayList<String> mockItems = new ArrayList<>();
+        mockItems.add("Brasilien");
+        mockItems.add("Finnland");
+        mockItems.add("Portugal");
+        mockItems.add("SüdKorea");
+        mockItems.add("USA");
+        mockItems.add("Vietnam");
+
         rowItems = new ArrayList<cards>();
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
 
@@ -238,6 +246,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToSettings(View view) {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        return;
+    }
+
+    public void goToFinal(View view) {
+        Intent intent = new Intent(MainActivity.this, FinalActivity.class);
         startActivity(intent);
         return;
     }

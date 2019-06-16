@@ -67,4 +67,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLCOUNTRY, country);
         return db.update(AUSWERTUNG_TABLE_NAME, contentValues, COLUSER + "=?", new String[]{String.valueOf(user)}) == 1;
     }
+
+    public String getTopCountries(int rang){
+        // Funktion damit wir die besten 3-5 Countries bekommen oder rang = 3 -> 3.Platz bekommen
+        return "testvalue";
+    }
 }
