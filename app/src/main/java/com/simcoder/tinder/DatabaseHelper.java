@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,17 +61,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(AUSWERTUNG_TABLE_NAME, null, contentValues) != -1;
     }
 
-    //Wir brauchen einen Wert welchen wir hier übergeben, zb. 3 bei sehr gut und 1 bei mittel usw
-    //
-    boolean increaseRating(String user, String country) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLCOUNTRY, country);
-        return db.update(AUSWERTUNG_TABLE_NAME, contentValues, COLUSER + "=?", new String[]{String.valueOf(user)}) == 1;
+    boolean increaseRating(String user, String country, Integer increase) {
+        try {
+            SQLiteDatabase readDb = getReadableDatabase();
+            Cursor queryCursor = readDb.rawQuery("SELECT " + COLRATING + " FROM " + AUSWERTUNG_TABLE_NAME + " WHERE " + COLUSER + " = " + user + " AND " + COLCOUNTRY + " = " + country, null);
+            Integer oldRating = Integer.parseInt(queryCursor.getString(0));
+            SQLiteDatabase writeDb = getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(COLCOUNTRY, country);
+            contentValues.put(COLRATING, oldRating += increase);
+            return writeDb.update(AUSWERTUNG_TABLE_NAME, contentValues,COLUSER + "=?", new String[]{String.valueOf(user)}) == 1;
+        }catch (Exception ex){
+            return false;
+        }
+
     }
 
-    public String getTopCountries(int rang){
-        // Funktion damit wir die besten 3-5 Countries bekommen oder rang = 3 -> 3.Platz bekommen
-        return "testvalue";
+    Cursor getTopCountries(String user) {
+        SQLiteDatabase db = getReadableDatabase();
+        return db.rawQuery("SELECT TOP(5) * FROM " + AUSWERTUNG_TABLE_NAME + " WHERE " + COLUSER + " IS " + user , null);
     }
 }
