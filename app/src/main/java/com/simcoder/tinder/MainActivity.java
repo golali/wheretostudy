@@ -1,6 +1,7 @@
 package com.simcoder.tinder;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,15 +57,8 @@ public class MainActivity extends AppCompatActivity {
         currentUId = mAuth.getCurrentUser().getUid();
         checkUserSex();
 
-        ArrayList<String> mockItems = new ArrayList<>();
-        mockItems.add("Brasilien");
-        mockItems.add("Finnland");
-        mockItems.add("Portugal");
-        mockItems.add("SüdKorea");
-        mockItems.add("USA");
-        mockItems.add("Vietnam");
-
         rowItems = new ArrayList<cards>();
+        createCards();
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -77,42 +71,6 @@ public class MainActivity extends AppCompatActivity {
                 rowItems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
-
-            public void onNoButton(Object dataObject){
-                cards obj = (cards) dataObject;
-                String userId = obj.getUserId();
-                List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList, 1);
-                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
-            }
-
-            public void onYesButton(Object dataObject){
-                cards obj = (cards) dataObject;
-                String userId = obj.getUserId();
-                List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList, 4);
-                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
-            }
-
-            public void onMaybeButton(Object dataObject){
-                cards obj = (cards) dataObject;
-                String userId = obj.getUserId();
-                List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList, 2);
-                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
-            }
-
-            public void onPossibleButton(Object dataObject){
-                cards obj = (cards) dataObject;
-                String userId = obj.getUserId();
-                List<String> countrieList = obj.countries;
-                //coutryDbHelper.increaseRating(usersDb, countriesList, 3);
-                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
-            }
-
-
-
-
 
             @Override
             public void onLeftCardExit(Object dataObject) {
@@ -150,6 +108,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void createCards() {
+
+        rowItems.add(new cards("001", "image 1", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image1).toString()));
+        rowItems.add(new cards("002", "image 2", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image2).toString()));
+        rowItems.add(new cards("003", "image 3", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image3).toString()));
+        rowItems.add(new cards("004", "image 4", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image4).toString()));
+        rowItems.add(new cards("005", "image 5", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image5).toString()));
+        rowItems.add(new cards("006", "image 6", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image6).toString()));
+        rowItems.add(new cards("007", "image 7", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image7).toString()));
+        rowItems.add(new cards("008", "image 8", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image8).toString()));
+        rowItems.add(new cards("009", "image 9", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image9).toString()));
+        rowItems.add(new cards("010", "image 10", Uri.parse("android.resource://com.simcoder.tinder/" + R.drawable.image10).toString()));
+
+    }
+
+    public void onNoButton(Object dataObject){
+        cards obj = (cards) dataObject;
+        String userId = obj.getUserId();
+        List<String> countrieList = obj.countries;
+        //coutryDbHelper.increaseRating(usersDb, countriesList, 1);
+        // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+    }
+
+    public void onYesButton(Object dataObject){
+        cards obj = (cards) dataObject;
+        String userId = obj.getUserId();
+        List<String> countrieList = obj.countries;
+        //coutryDbHelper.increaseRating(usersDb, countriesList, 4);
+        // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+    }
+
+    public void onMaybeButton(Object dataObject){
+        cards obj = (cards) dataObject;
+        String userId = obj.getUserId();
+        List<String> countrieList = obj.countries;
+        //coutryDbHelper.increaseRating(usersDb, countriesList, 2);
+        // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+    }
+
+    public void onPossibleButton(Object dataObject){
+        cards obj = (cards) dataObject;
+        String userId = obj.getUserId();
+        List<String> countrieList = obj.countries;
+        //coutryDbHelper.increaseRating(usersDb, countriesList, 3);
+        // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
     }
 
     private void isConnectionMatch(String userId) {
