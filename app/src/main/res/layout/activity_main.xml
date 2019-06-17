@@ -63,10 +63,11 @@
             android:text="IDK" />
 
         <Button
+            android:id="@+id/right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="goToSettings"
+            android:onClick="onYesButton"
             android:text="YES" />
     </LinearLayout>
 
