@@ -20,6 +20,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.simcoder.tinder.Cards.arrayAdapter;
 import com.simcoder.tinder.Cards.cards;
 import com.simcoder.tinder.Matches.MatchesActivity;
+import com.simcoder.tinder.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
-
         checkUserSex();
 
-        rowItems = new ArrayList<cards>();
+        ArrayList<String> mockItems = new ArrayList<>();
+        mockItems.add("Brasilien");
+        mockItems.add("Finnland");
+        mockItems.add("Portugal");
+        mockItems.add("SüdKorea");
+        mockItems.add("USA");
+        mockItems.add("Vietnam");
 
+        rowItems = new ArrayList<cards>();
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -70,6 +77,42 @@ public class MainActivity extends AppCompatActivity {
                 rowItems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
+
+            public void onNoButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 1);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+            public void onYesButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 4);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+            public void onMaybeButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 2);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+            public void onPossibleButton(Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                List<String> countrieList = obj.countries;
+                //coutryDbHelper.increaseRating(usersDb, countriesList, 3);
+                // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
+            }
+
+
+
+
 
             @Override
             public void onLeftCardExit(Object dataObject) {
@@ -203,6 +246,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToSettings(View view) {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        return;
+    }
+
+    public void goToFinal(View view) {
+        Intent intent = new Intent(MainActivity.this, FinalActivity.class);
         startActivity(intent);
         return;
     }
