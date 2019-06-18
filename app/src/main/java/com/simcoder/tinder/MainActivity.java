@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -54,15 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         myDb = new DatabaseHelper(this);
 
-        /*SQLiteDatabase db = new DatabaseHelper(getApplicationContext()).getReadableDatabase();
+        SQLiteDatabase db = new DatabaseHelper(getApplicationContext()).getReadableDatabase();
 
-        Cursor c = db.rawQuery("Select * from auswertung_table where country = USA", null);
-
-        if (c != null) {
-            c.moveToFirst();
-        }
-
-        System.out.println("name: " + c.getString(c.getColumnIndex("country")));*/
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -78,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
-
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
