@@ -70,9 +70,9 @@ public class FinalActivity extends AppCompatActivity {
         mSecondScore = (TextView) findViewById(R.id.secondScore);
         mThirdScore = (TextView) findViewById(R.id.thirdScore);
 
-        mFirstCountry.setText(countryDbHelper.getTopCountries(1));
-        mSecondCountry.setText(countryDbHelper.getTopCountries(2));
-        mThirdCountry.setText(countryDbHelper.getTopCountries(3));
+        // mFirstCountry.setText(countryDbHelper.getTopCountries(1));
+        // mSecondCountry.setText(countryDbHelper.getTopCountries(2));
+        // mThirdCountry.setText(countryDbHelper.getTopCountries(3));
 
 
         mAuth = FirebaseAuth.getInstance();
