@@ -41,18 +41,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         countries.add("Australia");
         countries.add("USA");
         for(String s : countries) {
-            populateAuswertung("12345", s);
+            populateAuswertung("12345", s, db);
         }
-        populateCountry(1, "Singapore", "English", "Singapore dollar", 18);
-        populateCountry(2, "Egypt", "Arabic", "Egyptian pound", 18);
-        populateCountry(3, "France", "French", "Euro", 18);
-        populateCountry(4, "Hong Kong", "Chinese", "Hong Kong dollar", 18);
-        populateCountry(5, "Mexico", "Spanish", "Mexican peso", 18);
-        populateCountry(6, "Spain", "Spanish", "Euro", 16);
-        populateCountry(7, "Thailand", "Thai", "Thai baht", 20);
-        populateCountry(8, "Turkey", "Turkish", "Turkish lira", 18);
-        populateCountry(9, "Australia", "English", "Australian dollar", 18);
-        populateCountry(10, "USA", "English", "US dollar", 21);
+        populateCountry(1, "Singapore", "English", "Singapore dollar", 18, db);
+        populateCountry(2, "Egypt", "Arabic", "Egyptian pound", 18, db);
+        populateCountry(3, "France", "French", "Euro", 18, db);
+        populateCountry(4, "Hong Kong", "Chinese", "Hong Kong dollar", 18, db);
+        populateCountry(5, "Mexico", "Spanish", "Mexican peso", 18, db);
+        populateCountry(6, "Spain", "Spanish", "Euro", 16, db);
+        populateCountry(7, "Thailand", "Thai", "Thai baht", 20, db);
+        populateCountry(8, "Turkey", "Turkish", "Turkish lira", 18, db);
+        populateCountry(9, "Australia", "English", "Australian dollar", 18, db);
+        populateCountry(10, "USA", "English", "US dollar", 21, db);
 
         System.out.println("success");
     }
@@ -73,23 +73,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createCountryTable);
     }
 
-    boolean populateCountry(Integer id, String name, String language, String currency, Integer drinking) {
+    boolean populateCountry(Integer id, String name, String language, String currency, Integer drinking, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("c_id", id);
         contentValues.put("c_name", name);
         contentValues.put("c_language", language);
         contentValues.put("c_currency", currency);
         contentValues.put("c_drink", drinking);
-        SQLiteDatabase db = getWritableDatabase();
         return db.insert("Country", null, contentValues) != -1;
     }
 
-    boolean populateAuswertung(String user, String country) {
+    boolean populateAuswertung(String user, String country, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUSER, user);
         contentValues.put(COLCOUNTRY, country);
         contentValues.put(COLRATING, 0);
-        SQLiteDatabase db = getWritableDatabase();
         return db.insert(TBL_RANKING, null, contentValues) != -1;
     }
 
