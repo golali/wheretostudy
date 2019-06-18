@@ -1,12 +1,17 @@
 package com.simcoder.tinder;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,6 +29,7 @@ import com.simcoder.tinder.Cards.cards;
 import com.simcoder.tinder.Matches.MatchesActivity;
 import com.simcoder.tinder.DatabaseHelper;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mYes;
 
     private DatabaseReference usersDb;
-    private DatabaseHelper coutryDbHelper;
+    DatabaseHelper myDb;
 
 
     ListView listView;
@@ -49,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Code für die Auswertungsdatenbank
-        coutryDbHelper = new DatabaseHelper(this);
-
-        mYes = (Button) findViewById(R.id.yes);
-
+        myDb = new DatabaseHelper(this);
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -64,10 +66,12 @@ public class MainActivity extends AppCompatActivity {
         rowItems = new ArrayList<cards>();
         createCards();
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
+        int question = 1;
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
+
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
@@ -160,10 +164,11 @@ public class MainActivity extends AppCompatActivity {
         // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
     }
 
-    public void onYesButton(Object dataObject){
-        cards obj = (cards) dataObject;
-        String userId = obj.getUserId();
-        List<String> countrieList = obj.countries;
+    public void onYesButton(View view){
+        SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+        flingContainer.getTopCardListener().selectRight();
+        // Log.i("Bensalim", question);
+        // List<String> countrieList = obj.countries;
         //coutryDbHelper.increaseRating(usersDb, countriesList, 4);
         // oder eine schleife für jeden Country was für ein "Bild" hinterlegt ist
     }
