@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private String currentUId;
+    private Button mYes;
 
     private DatabaseReference usersDb;
     DatabaseHelper myDb;
@@ -53,16 +56,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         myDb = new DatabaseHelper(this);
-
-        /*SQLiteDatabase db = new DatabaseHelper(getApplicationContext()).getReadableDatabase();
-
-        Cursor c = db.rawQuery("Select * from auswertung_table where country = USA", null);
-
-        if (c != null) {
-            c.moveToFirst();
-        }
-
-        System.out.println("name: " + c.getString(c.getColumnIndex("country")));*/
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -105,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
             }
 
+
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
             }
@@ -112,6 +106,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScroll(float scrollProgressPercent) {
             }
+
+            Object dataObject
+
+            public final void onButtonYes (Object dataObject){
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                usersDb.child(userId).child("connections").child("yeps").child(currentUId).setValue(true);
+                isConnectionMatch(userId);
+                Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
+            }
+
+
         });
 
 
@@ -121,7 +127,17 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClicked(int itemPosition, Object dataObject) {
                 Toast.makeText(MainActivity.this, "Item Clicked", Toast.LENGTH_SHORT).show();
             }
+
         });
+
+        public final void onButtonYes (Object dataObject){
+            cards obj = (cards) dataObject;
+            String userId = obj.getUserId();
+            usersDb.child(userId).child("connections").child("yeps").child(currentUId).setValue(true);
+            isConnectionMatch(userId);
+            Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
