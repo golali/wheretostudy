@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         countries.add("Mongolei");
         countries.add("Norwegen");
         for(String s : countries) {
-            addCountry("12345", s);
+            addCountry("12345", s, db);
         }
     }
 
@@ -52,12 +52,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createUserTable);
     }
 
-    boolean addCountry(String user, String country) {
+    boolean addCountry(String user, String country, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUSER, user);
         contentValues.put(COLCOUNTRY, country);
         contentValues.put(COLRATING, 0);
-        SQLiteDatabase db = getWritableDatabase();
         return db.insert(AUSWERTUNG_TABLE_NAME, null, contentValues) != -1;
     }
 
