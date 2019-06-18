@@ -30,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         createAuswertungTable(db);
         createCountryTable(db);
+        createCollegesTable(db);
         countries.add("Singapore");
         countries.add("Egypt");
         countries.add("France");
@@ -54,6 +55,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         populateCountry(9, "Australia", "English", "Australian dollar", 18, db);
         populateCountry(10, "USA", "English", "US dollar", 21, db);
 
+        populateColleges(1, 1, "National University of Singapore", db);
+        populateColleges(1, 2, "Nanyang Technological University", db);
+        populateColleges(1, 3, "Singapore Management University", db);
+        populateColleges(2, 1, "Ain Shams University", db);
+        populateColleges(2, 2, "Military Technical College", db);
+        populateColleges(2, 3, "Port Said University", db);
+        populateColleges(3, 1, "Ecole Polytechnique", db);
+        populateColleges(3, 2, "Mines et ponts", db);
+        populateColleges(3, 3, "Centrale Paris", db);
+        populateColleges(4, 1, "Chinese University", db);
+        populateColleges(4, 2, "City University of Hong Kong", db);
+        populateColleges(4, 3, "Lingnan University", db);
+        populateColleges(5, 1, "Tecnologico de Moterrey", db);
+        populateColleges(5, 2, "UDAM", db);
+        populateColleges(5, 3, "Puebla Universidad", db);
+        populateColleges(6, 1, "University of Almería", db);
+        populateColleges(6, 2, "University of Barcelona", db);
+        populateColleges(6, 3, "University of Vigo", db);
+        populateColleges(7, 1, "Naresuan University", db);
+        populateColleges(7, 2, "Maejo University", db);
+        populateColleges(7, 3, "Thammasat University", db);
+        populateColleges(8, 1, "Ankara University", db);
+        populateColleges(8, 2, "Galatasaray University", db);
+        populateColleges(8, 3, "Kadir Has University", db);
+        populateColleges(9, 1, "University of Melbourne", db);
+        populateColleges(9, 2, "Central Queensland University", db);
+        populateColleges(9, 3, "Edith Cowan University", db);
+        populateColleges(10, 1, "MIT", db);
+        populateColleges(10, 2, "Stanford University", db);
+        populateColleges(10, 3, "Harvard University", db);
+
         System.out.println("success");
     }
 
@@ -73,6 +105,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createCountryTable);
     }
 
+    public void createCollegesTable(SQLiteDatabase db) {
+        String createCollegesTable = "CREATE TABLE Colleges(college_id Integer, country_id Integer, college_name varchar(200) NOT NULL, PRIMARY KEY (country_id, college_id))";
+        db.execSQL(createCollegesTable);
+    }
+
     boolean populateCountry(Integer id, String name, String language, String currency, Integer drinking, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("c_id", id);
@@ -81,6 +118,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("c_currency", currency);
         contentValues.put("c_drink", drinking);
         return db.insert("Country", null, contentValues) != -1;
+    }
+
+    boolean populateColleges(Integer country_id, Integer college_id, String name, SQLiteDatabase db) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("country_id", country_id);
+        contentValues.put("name", name);
+        contentValues.put("college_id", college_id);
+        return db.insert("Colleges", null, contentValues) != -1;
     }
 
     boolean populateAuswertung(String user, String country, SQLiteDatabase db) {
