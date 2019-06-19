@@ -68,6 +68,7 @@
             android:layout_weight="1"
             android:onClick="onYes"
             android:text="Yes" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
