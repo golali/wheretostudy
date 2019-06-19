@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "392528206718",
+    "firebase_url": "https://wheretostudy-4bbf0.firebaseio.com",
+    "project_id": "wheretostudy-4bbf0",
+    "storage_bucket": "wheretostudy-4bbf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392528206718:android:dd4e277d420790ae",
+        "android_client_info": {
+          "package_name": "de.hska.wheretostudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392528206718-cc6qigf41hfk4dir4b75tmlngantg2v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.hska.wheretostudy",
+            "certificate_hash": "3f6ef2b04b7f61951303ad3aeb0fa3d6377ca08c"
+          }
+        },
+        {
+          "client_id": "392528206718-0mbddm5a37gbhj32qckgokmukoii5jnm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZTdl_yquAhNsf3AYwVzsW2FTsk-CX3ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392528206718-0mbddm5a37gbhj32qckgokmukoii5jnm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
