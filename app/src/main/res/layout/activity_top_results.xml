@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="de.hska.wheretostudy.TopResultsActivity"
+    android:orientation="vertical">
+    <TableLayout
+        android:id="@+id/simpleTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"> <!-- stretch the second column of the layout-->
+
+        <!-- first row of the table layout-->
+        <TableRow
+
+            android:id="@+id/firstRow"
+            android:layout_width="fill_parent"
+            android:layout_height="98dp">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/rang"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="18dip"
+                android:text="Rang"
+                android:textColor="#000"
+                android:textSize="12dp" />
+
+            <TextView
+
+                android:id="@+id/land"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:padding="18dip"
+                android:text="Land"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#d3d3d3"
+                android:padding="18dip"
+                android:text="Score"
+                android:textColor="#000"
+                android:textSize="14dp" />
+        </TableRow>
+
+        <TableRow
+
+            android:id="@+id/secondRow"
+            android:layout_width="fill_parent"
+            android:layout_height="98dp">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/simpleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="18dip"
+                android:text="1."
+                android:textColor="#000"
+                android:textSize="12dp" />
+
+            <TextView
+
+                android:id="@+id/firstCountrytop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#afeeee"
+                android:padding="18dip"
+                android:text="Mexico"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:id="@+id/firstScoretop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#d3d3d3"
+                android:padding="18dip"
+                android:text="18"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+        </TableRow>
+
+        <TableRow
+
+            android:id="@+id/thirdRow"
+            android:layout_width="fill_parent"
+            android:layout_height="98dp">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="18dip"
+                android:text="2."
+                android:textColor="#000"
+                android:textSize="12dp" />
+
+            <TextView
+
+                android:id="@+id/secondCountrytop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#afeeee"
+                android:padding="18dip"
+                android:text="USA"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:id="@+id/secondScoretop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#d3d3d3"
+                android:padding="18dip"
+                android:text="16"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+        </TableRow>
+
+        <TableRow
+
+            android:id="@+id/forthRow"
+            android:layout_width="fill_parent"
+            android:layout_height="98dp">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="18dip"
+                android:text="3."
+                android:textColor="#000"
+                android:textSize="12dp" />
+
+            <TextView
+
+                android:id="@+id/thirdCountrytop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#afeeee"
+                android:padding="18dip"
+                android:text="Hong Kong"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:id="@+id/thirdScoretop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#D3D3D3"
+                android:padding="18dip"
+                android:text="10"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

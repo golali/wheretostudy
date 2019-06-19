@@ -41,7 +41,7 @@ public class StarterActivity extends AppCompatActivity {
         mTopResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StarterActivity.this, MainActivity.class);
+                Intent intent = new Intent(StarterActivity.this, TopResultsActivity.class);
                 startActivity(intent);
                 finish();
             }
