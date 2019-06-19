@@ -6,17 +6,23 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.hsalf.smilerating.BaseRating;
+import com.hsalf.smilerating.SmileRating;
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb;
     int counter = 1;
+
+    SmileRating smileRating = (SmileRating) findViewById(R.id.smile_rating);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,32 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String currentUId = mAuth.getCurrentUser().getUid();
+
+        smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
+            @Override
+            public void onSmileySelected(@BaseRating.Smiley int smiley, boolean reselected) {
+                // reselected is false when user selects different smiley that previously selected one
+                // true when the same smiley is selected.
+                // Except if it first time, then the value will be false.
+                switch (smiley) {
+                    case SmileRating.BAD:
+                        System.out.println("BAD");
+                        break;
+                    case SmileRating.GOOD:
+                        System.out.println("Good");
+                        break;
+                    case SmileRating.GREAT:
+                        System.out.println("GREAT");
+                        break;
+                    case SmileRating.OKAY:
+                        System.out.println("OKAY");
+                        break;
+                    case SmileRating.TERRIBLE:
+                        System.out.println("TERRIBLE");
+                        break;
+                }
+            }
+        });
 
     }
 
