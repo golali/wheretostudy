@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.simcoder.tinder">
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    package="de.hska.wheretostudy">
 
     <application
         android:allowBackup="true"
@@ -21,11 +19,7 @@
         </activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SettingsActivity" />
         <activity android:name=".StarterActivity" />
-        <activity android:name=".FinalActivity" />
-        <activity android:name=".Matches.MatchesActivity" />
-        <activity android:name=".Chat.ChatActivity"></activity>
     </application>
 
 </manifest>
