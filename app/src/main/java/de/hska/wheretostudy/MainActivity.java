@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        /*SQLiteDatabase db = new DatabaseHelper(getApplicationContext()).getReadableDatabase();
+        SQLiteDatabase db = new DatabaseHelper(getApplicationContext()).getReadableDatabase();
 
         Cursor c = db.rawQuery("select * from Colleges", null);
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             c.moveToFirst();
             System.out.println("name: " + c.getString(c.getColumnIndex("college_name")) + " Bensalim");
             c.close();
-        }*/
+        }
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String currentUId = mAuth.getCurrentUser().getUid();
